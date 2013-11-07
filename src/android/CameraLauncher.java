@@ -436,6 +436,9 @@ public class CameraLauncher extends CordovaPlugin implements MediaScannerConnect
 
                         // If sending filename back
                         else if (destType == FILE_URI || destType == NATIVE_URI) {
+                            if (destType == FILE_URI) {
+                                uri = Uri.fromFile(new File(FileHelper.getRealPath(uri, this.cordova)));
+                            }
                             // Do we need to scale the returned file
                             if (this.targetHeight > 0 && this.targetWidth > 0) {
                                 try {
